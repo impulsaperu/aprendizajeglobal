@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Aprendizaje Global | Biblioteca Digital</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+    body, html {
+      width: 100%;
+      height: 100%;
+      overflow: hidden;
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+      background-color: #f4f4f7;
+    }
+    .iframe-container {
+      width: 100%;
+      height: 100vh;
+      border: none;
+    }
+    iframe {
+      width: 100%;
+      height: 100%;
+      border: none;
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Visor directo de la biblioteca en FlipLink -->
+  <div class="iframe-container">
+    <iframe 
+      src="https://brochure.wasicrm.site/40dias" 
+      title="Biblioteca Digital"
+      allow="fullscreen">
+    </iframe>
+  </div>
+
+  <!-- Widget de ChatMaxima -->
+  <script>
+    window.chatmaximaConfig = { token: '42vw6iznk9' };
+  </script>
+  <script id="42vw6iznk9" src="https://widget.chatmaxima.com/embed.min.js" defer></script>
+
+</body>
+</html>
