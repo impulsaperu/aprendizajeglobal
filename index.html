@@ -4,40 +4,44 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Aprendizaje Global | Biblioteca Digital</title>
+
+  <!-- Paso 1: Scripts de FlipLink para cargar la galería de libros -->
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+  <script src="https://go.fliplink.me/content/assets/js/embed.js?v=5.0"></script>
+  <script src="https://go.fliplink.me/content/assets/js/hip.js?v=5.0"></script>
+  <script>
+    var itemsPerPage = 4, itemsPerRow = 4, itemGaps = '10px', filter = true, paginationPos = 'left', sort = 1;
+  </script>
+
   <style>
     * {
       margin: 0;
       padding: 0;
       box-sizing: border-box;
     }
-    body, html {
-      width: 100%;
-      height: 100%;
-      overflow: hidden;
+    body {
       font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
       background-color: #f4f4f7;
+      padding: 20px;
     }
-    .iframe-container {
-      width: 100%;
-      height: 100vh;
-      border: none;
+    .container {
+      max-width: 1200px;
+      margin: 0 auto;
     }
-    iframe {
-      width: 100%;
-      height: 100%;
-      border: none;
+    h1 {
+      text-align: center;
+      margin-bottom: 25px;
+      color: #333;
     }
   </style>
 </head>
 <body>
 
-  <!-- Visor directo de la biblioteca en FlipLink -->
-  <div class="iframe-container">
-    <iframe 
-      src="https://brochure.wasicrm.site/40dias" 
-      title="Biblioteca Digital"
-      allow="fullscreen">
-    </iframe>
+  <div class="container">
+    <h1>Biblioteca Digital | Aprendizaje Global</h1>
+
+    <!-- Paso 2: Contenedor que muestra la carpeta de FlipLinks -->
+    <div class="fliplink-container" data-title="APRENDIZAJEGLOBAL" data-folder="biblioteca"></div>
   </div>
 
   <!-- Widget de ChatMaxima -->
