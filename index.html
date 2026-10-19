@@ -10,7 +10,6 @@
   <script src="https://go.fliplink.me/content/assets/js/embed.js?v=5.0"></script>
   <script src="https://go.fliplink.me/content/assets/js/hip.js?v=5.0"></script>
   <script>
-    // Variables nativas de FlipLink
     var itemsPerRow = 3, itemsPerPage = 8, itemGaps = '20px', filter = false, paginationPos = 'center', sort = 2;
   </script>
 
@@ -38,7 +37,7 @@
       margin: 0 auto;
     }
 
-    /* TÍTULO PRINCIPAL ÚNICO Y CENTRADO */
+    /* TÍTULO PRINCIPAL DE LA WEB */
     .main-title {
       text-align: center;
       font-size: 1.8rem;
@@ -48,20 +47,12 @@
       letter-spacing: -0.5px;
     }
 
-    /* OCULTAR ENCABEZADOS Y BÚSQUEDA INTERNA DE FLIPLINK */
-    .fliplink-container h1,
-    .fliplink-container h2,
-    .fliplink-container h3,
-    .fliplink-container .fliplink-folder-title,
-    .fliplink-container .fliplink-search-box,
-    .fliplink-container [class*="title"],
-    .fliplink-container [class*="header"] {
+    /* OCULTAR ÚNICAMENTE EL ENCABEZADO/TITULO SUPERIOR DE LA CARPETA DE FLIPLINK */
+    .fliplink-folder-title,
+    .fliplink-search-box,
+    .fliplink-container > div > h1,
+    .fliplink-container > div > h2 {
       display: none !important;
-      visibility: hidden !important;
-      height: 0 !important;
-      margin: 0 !important;
-      padding: 0 !important;
-      overflow: hidden !important;
     }
 
     .fliplink-container {
@@ -70,7 +61,21 @@
       justify-content: center;
     }
 
-    /* AJUSTE FORZADO DE LAS TARJETAS EN CELULAR (1 O 2 COLUMNAS PARA QUE SE VEAN GRANDES) */
+    /* ASEGURAR QUE LOS TÍTULOS DE CADA LIBRO SÍ SE VEAN */
+    .fliplink-item-title,
+    .fliplink-container [class*="item-title"],
+    .fliplink-container p,
+    .fliplink-container span {
+      display: block !important;
+      visibility: visible !important;
+      text-align: center !important;
+      font-weight: 600 !important;
+      color: #333 !important;
+      margin-top: 8px !important;
+      font-size: 0.9rem !important;
+    }
+
+    /* VISTA MÓVIL (MÁXIMO 2 COLUMNAS GRANDES) */
     @media (max-width: 768px) {
       body {
         padding: 15px 10px 90px 10px;
@@ -79,25 +84,26 @@
         font-size: 1.4rem;
         margin-bottom: 15px;
       }
-      /* Redimensiona las portadas en móviles para que no se vean diminutas */
+      /* Ajusta el tamaño de las tarjetas en móviles */
       .fliplink-container .fliplink-item,
       .fliplink-container [class*="item"] {
-        width: 45% !important; /* 2 columnas grandes por fila en celular */
+        width: 45% !important;
         min-width: 140px !important;
         margin: 8px !important;
+        display: inline-block !important;
       }
     }
 
     @media (max-width: 480px) {
       .fliplink-container .fliplink-item,
       .fliplink-container [class*="item"] {
-        width: 85% !important; /* 1 columna gigante centrada en pantallas pequeñas */
+        width: 85% !important;
         max-width: 280px !important;
-        margin: 12px auto !important;
+        margin: 15px auto !important;
       }
     }
 
-    /* MODAL PANTALLA COMPLETA AL ABRIR UN LIBRO */
+    /* MODAL A PANTALLA COMPLETA AL ABRIR CADA LIBRO */
     .hip-modal, .hip-modal-content, iframe[name="hip-iframe"] {
       width: 100vw !important;
       height: 100vh !important;
@@ -122,13 +128,6 @@
     <!-- Galería de FlipLinks -->
     <div class="fliplink-container" data-title="APRENDIZAJEGLOBAL" data-folder="biblioteca"></div>
   </div>
-
-  <!-- Elimina el título residual inyectado por JS -->
-  <script>
-    setInterval(function() {
-      $('.fliplink-container').find('h1, h2, h3, [class*="title"]').not('.main-title').remove();
-    }, 300);
-  </script>
 
   <!-- Widget de ChatMaxima -->
   <script>
