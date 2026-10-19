@@ -10,7 +10,7 @@
   <script src="https://go.fliplink.me/content/assets/js/embed.js?v=5.0"></script>
   <script src="https://go.fliplink.me/content/assets/js/hip.js?v=5.0"></script>
   <script>
-    var itemsPerRow = 3, itemsPerPage = 8, itemGaps = '15px', filter = false, paginationPos = 'center', sort = 2;
+    var itemsPerRow = 3, itemsPerPage = 8, itemGaps = '20px', filter = false, paginationPos = 'center', sort = 2;
   </script>
 
   <style>
@@ -29,7 +29,7 @@
       color: #333;
     }
     body {
-      padding: 20px 10px 90px 10px;
+      padding: 25px 15px 100px 15px;
     }
     .container {
       width: 100%;
@@ -37,41 +37,33 @@
       margin: 0 auto;
     }
 
-    /* CONTENEDOR Y MARCA APRENDIZAJEGLOBAL AJUSTADA PARA MÓVIL */
+    /* CONTENEDOR Y TÍTULO DE MARCA */
     .fliplink-container {
       width: 100%;
-      display: block;
       text-align: center;
       position: relative;
     }
 
-    /* Ajustar el título de la carpeta que genera FlipLink para que no se desborde */
     .fliplink-container .fliplink-folder-title,
-    .fliplink-container h2,
-    .fliplink-container [class*="folder-title"] {
+    .fliplink-container h2 {
       display: block !important;
-      visibility: visible !important;
-      font-size: 1.3rem !important;
+      font-size: 1.5rem !important;
       font-weight: 800 !important;
-      text-transform: uppercase !important;
       color: #222 !important;
-      margin: 10px 0 20px 0 !important;
-      word-wrap: break-word !important;
-      white-space: normal !important;
+      margin: 10px 0 25px 0 !important;
       text-align: center !important;
       width: 100% !important;
     }
 
-    /* Ocultar únicamente el buscador de FlipLink */
+    /* OCULTAR BUSCADOR */
     .fliplink-search-box,
     .fliplink-container input[type="text"] {
       display: none !important;
     }
 
-    /* MOSTRAR TÍTULOS DE CADA LIBRO BAJO LAS PORTADAS */
+    /* TÍTULOS DE CADA LIBRO VISIBLES DEBAJO DE LA PORTADA */
     .fliplink-container .fliplink-item-title,
-    .fliplink-container [class*="item-title"],
-    .fliplink-container [class*="title-text"],
+    .fliplink-container [class*="title"],
     .fliplink-container p,
     .fliplink-container span {
       display: block !important;
@@ -80,33 +72,41 @@
       font-weight: 600 !important;
       color: #333 !important;
       margin-top: 8px !important;
-      font-size: 0.85rem !important;
+      font-size: 0.88rem !important;
+      word-break: break-word !important;
     }
 
-    /* VISTA DE TARJETAS EN CELULAR (PORTADAS GRANDES) */
+    /* VISTA EN MÓVILES: FORZAR TARJETAS GRANDES EN 2 COLUMNAS O 1 COLUMNA */
     @media (max-width: 768px) {
       body {
-        padding: 12px 6px 80px 6px;
+        padding: 15px 8px 90px 8px;
       }
+      .fliplink-container .fliplink-item,
       .fliplink-container [class*="item"] {
-        width: 46% !important;
+        width: 44% !important;
+        max-width: 44% !important;
         min-width: 140px !important;
-        margin: 6px 1.5% 15px 1.5% !important;
+        margin: 8px 2% 18px 2% !important;
         display: inline-block !important;
         vertical-align: top !important;
       }
+      .fliplink-container [class*="item"] img {
+        width: 100% !important;
+        height: auto !important;
+      }
     }
 
-    @media (max-width: 400px) {
+    @media (max-width: 420px) {
+      .fliplink-container .fliplink-item,
       .fliplink-container [class*="item"] {
-        width: 88% !important;
-        max-width: 280px !important;
+        width: 85% !important;
+        max-width: 270px !important;
         margin: 10px auto 20px auto !important;
         display: block !important;
       }
     }
 
-    /* LECTOR A PANTALLA COMPLETA TOTAL EN MÓVILES AL ABRIR CUALQUIER LIBRO */
+    /* LECTOR A PANTALLA COMPLETA TOTAL EN CELULAR Y PC */
     .hip-modal, .hip-modal-content {
       width: 100vw !important;
       height: 100vh !important;
@@ -134,7 +134,6 @@
 <body>
 
   <div class="container">
-    <!-- Galería con la carpeta biblioteca de FlipLink -->
     <div class="fliplink-container" data-title="APRENDIZAJEGLOBAL" data-folder="biblioteca"></div>
   </div>
 
