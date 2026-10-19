@@ -29,7 +29,7 @@
       color: #333;
     }
     body {
-      padding: 25px 15px 100px 15px;
+      padding: 20px 10px 100px 10px;
     }
     .container {
       width: 100%;
@@ -37,22 +37,22 @@
       margin: 0 auto;
     }
 
-    /* CONTENEDOR Y TÍTULO DE MARCA */
+    /* TÍTULO DE MARCA DE FLIPLINK EN MÓVIL */
     .fliplink-container {
       width: 100%;
       text-align: center;
-      position: relative;
     }
 
     .fliplink-container .fliplink-folder-title,
     .fliplink-container h2 {
       display: block !important;
-      font-size: 1.5rem !important;
+      font-size: 1.4rem !important;
       font-weight: 800 !important;
       color: #222 !important;
-      margin: 10px 0 25px 0 !important;
+      margin: 10px 0 20px 0 !important;
       text-align: center !important;
       width: 100% !important;
+      letter-spacing: -0.3px !important;
     }
 
     /* OCULTAR BUSCADOR */
@@ -61,8 +61,48 @@
       display: none !important;
     }
 
-    /* TÍTULOS DE CADA LIBRO VISIBLES DEBAJO DE LA PORTADA */
-    .fliplink-container .fliplink-item-title,
+    /* REGLA MAESTRA PARA MÓVILES (ROMPER EL LAYOUT DE 3 COLUMNAS DE FLIPLINK) */
+    @media (max-width: 768px) {
+      /* Obliga al contenedor interno a usar Flexbox envolvente */
+      .fliplink-container > div,
+      .fliplink-items-container {
+        display: flex !important;
+        flex-wrap: wrap !important;
+        justify-content: center !important;
+        width: 100% !important;
+        gap: 15px !important;
+      }
+
+      /* Cada tarjeta ocupa el 45% en pantallas medianas o tabletas */
+      .fliplink-container [class*="item"],
+      div[class*="fliplink-item"] {
+        width: 45% !important;
+        max-width: 45% !important;
+        min-width: 140px !important;
+        margin: 0 0 15px 0 !important;
+        float: none !important;
+        display: block !important;
+      }
+    }
+
+    @media (max-width: 480px) {
+      /* En smartphones estándar (como el de la foto): 1 COLUMNA GRANDE */
+      .fliplink-container [class*="item"],
+      div[class*="fliplink-item"] {
+        width: 85% !important;
+        max-width: 280px !important;
+        margin: 0 auto 20px auto !important;
+      }
+    }
+
+    /* ASEGURAR QUE CADA PORTADA TENGA SU IMAGEN Y TEXTO CENTRADOS */
+    .fliplink-container [class*="item"] img {
+      width: 100% !important;
+      height: auto !important;
+      border-radius: 6px !important;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.12) !important;
+    }
+
     .fliplink-container [class*="title"],
     .fliplink-container p,
     .fliplink-container span {
@@ -72,41 +112,10 @@
       font-weight: 600 !important;
       color: #333 !important;
       margin-top: 8px !important;
-      font-size: 0.88rem !important;
-      word-break: break-word !important;
+      font-size: 0.9rem !important;
     }
 
-    /* VISTA EN MÓVILES: FORZAR TARJETAS GRANDES EN 2 COLUMNAS O 1 COLUMNA */
-    @media (max-width: 768px) {
-      body {
-        padding: 15px 8px 90px 8px;
-      }
-      .fliplink-container .fliplink-item,
-      .fliplink-container [class*="item"] {
-        width: 44% !important;
-        max-width: 44% !important;
-        min-width: 140px !important;
-        margin: 8px 2% 18px 2% !important;
-        display: inline-block !important;
-        vertical-align: top !important;
-      }
-      .fliplink-container [class*="item"] img {
-        width: 100% !important;
-        height: auto !important;
-      }
-    }
-
-    @media (max-width: 420px) {
-      .fliplink-container .fliplink-item,
-      .fliplink-container [class*="item"] {
-        width: 85% !important;
-        max-width: 270px !important;
-        margin: 10px auto 20px auto !important;
-        display: block !important;
-      }
-    }
-
-    /* LECTOR A PANTALLA COMPLETA TOTAL EN CELULAR Y PC */
+    /* MODAL FULLSCREEN COMPLETO AL ABRIR UN LIBRO */
     .hip-modal, .hip-modal-content {
       width: 100vw !important;
       height: 100vh !important;
