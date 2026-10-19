@@ -54,13 +54,13 @@
       width: 100% !important;
     }
 
-    /* OCULTAR BUSCADOR DE FLIPLINK */
+    /* OCULTAR BUSCADOR */
     .fliplink-search-box,
     .fliplink-container input[type="text"] {
       display: none !important;
     }
 
-    /* VISIBILIDAD GARANTIZADA PARA LOS TÍTULOS DE CADA LIBRO */
+    /* TÍTULOS DE CADA LIBRO EN TEXTO */
     .fliplink-container [class*="title"],
     .fliplink-container [class*="caption"],
     .fliplink-container p,
@@ -108,7 +108,7 @@
       }
     }
 
-    /* LECTOR DE LIBROS EN PANTALLA COMPLETA TOTAL */
+    /* LECTOR A PANTALLA COMPLETA TOTAL */
     .hip-modal, .hip-modal-content {
       width: 100vw !important;
       height: 100vh !important;
@@ -139,31 +139,13 @@
     <div class="fliplink-container" data-title="APRENDIZAJEGLOBAL" data-folder="biblioteca"></div>
   </div>
 
-  <!-- Widget de ChatMaxima configurado para omitir la carátula Home -->
+  <!-- Widget de ChatMaxima -->
   <script>
     window.chatmaximaConfig = {
-      token: '42vw6iznk9',
-      defaultTab: 'chat',
-      openTab: 'chat',
-      showHome: false
+      token: '42vw6iznk9'
     };
   </script>
   <script id="42vw6iznk9" src="https://widget.chatmaxima.com/embed.min.js" defer></script>
-
-  <!-- Script para forzar la navegación directa al Chat al hacer clic en el widget -->
-  <script>
-    document.addEventListener("DOMContentLoaded", function() {
-      var checkExist = setInterval(function() {
-        var widgetIframe = document.querySelector('iframe[id*="chatmaxima"]') || document.querySelector('iframe[src*="chatmaxima"]');
-        if (widgetIframe) {
-          try {
-            // Envía instrucción al iframe de ChatMaxima para forzar la vista de chat
-            widgetIframe.contentWindow.postMessage(JSON.stringify({ event: 'navigate', tab: 'chat' }), '*');
-          } catch(e) {}
-        }
-      }, 500);
-    });
-  </script>
 
 </body>
 </html>
