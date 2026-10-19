@@ -10,8 +10,7 @@
   <script src="https://go.fliplink.me/content/assets/js/embed.js?v=5.0"></script>
   <script src="https://go.fliplink.me/content/assets/js/hip.js?v=5.0"></script>
   <script>
-    // filter = false desactiva el cuadro de 'Search'
-    var itemsPerPage = 8, itemsPerRow = 3, itemGaps = '20px', filter = false, paginationPos = 'center', sort = 1;
+    var itemsPerPage = 8, itemsPerRow = 3, itemGaps = '15px', filter = false, paginationPos = 'center', sort = 1;
   </script>
 
   <style>
@@ -23,13 +22,14 @@
     }
     html, body {
       width: 100%;
-      min-height: 100%;
+      max-width: 100%;
+      overflow-x: hidden; /* Evita que la pantalla se desplace a los lados */
       font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
       background-color: #f4f4f7;
       color: #333;
     }
     body {
-      padding: 30px 15px 120px 15px; /* Bastante espacio abajo para la paginación y el chat */
+      padding: 20px 10px 100px 10px;
     }
     .container {
       width: 100%;
@@ -37,21 +37,27 @@
       margin: 0 auto;
     }
 
-    /* TÍTULO ÚNICO LIMPIO Y CENTRADO */
+    /* TÍTULO PRINCIPAL LIMPIO */
     .main-title {
       text-align: center;
-      font-size: 1.8rem;
+      font-size: 1.5rem;
       font-weight: 800;
       color: #222;
-      margin-bottom: 25px;
-      letter-spacing: -0.5px;
+      margin-bottom: 20px;
     }
 
-    /* OCULTAR EL TÍTULO INTERNO Y EL BUSCADOR QUE REPITE FLIPLINK */
-    .fliplink-container h2,
-    .fliplink-container .fliplink-folder-title,
-    .fliplink-container .fliplink-search-box,
-    .fliplink-container input[type="text"] {
+    /* OCULTAR TODOS LOS ENCABEZADOS Y BÚSQUEDAS DE FLIPLINK */
+    .fliplink-container *, 
+    .fliplink-folder-title, 
+    .fliplink-search-box, 
+    div[class*="title"], 
+    h1, h2, h3, h4 {
+      max-width: 100%;
+    }
+    
+    .fliplink-container > div:first-child:not(.fliplink-items-container),
+    .fliplink-folder-title,
+    .fliplink-search-box {
       display: none !important;
     }
 
@@ -59,20 +65,21 @@
       width: 100%;
       display: flex;
       justify-content: center;
+      overflow: hidden;
     }
 
-    /* MÓVILES */
+    /* VISTA MÓVIL */
     @media (max-width: 768px) {
       body {
-        padding: 20px 10px 100px 10px;
+        padding: 15px 8px 90px 8px;
       }
       .main-title {
-        font-size: 1.4rem;
-        margin-bottom: 18px;
+        font-size: 1.3rem;
+        margin-bottom: 15px;
       }
     }
 
-    /* FULLSCREEN DEL LIBRO AL ABRIR EN MÓVIL/PC */
+    /* MODAL A PANTALLA COMPLETA */
     .hip-modal, .hip-modal-content, iframe[name="hip-iframe"] {
       width: 100vw !important;
       height: 100vh !important;
