@@ -2,10 +2,10 @@
 <html lang="es">
 <head>
   <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover">
   <title>Aprendizaje Global | Biblioteca Digital</title>
 
-  <!-- Scripts oficiales de FlipLink sin sobrecarga -->
+  <!-- Scripts oficiales de FlipLink -->
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
   <script src="https://go.fliplink.me/content/assets/js/embed.js?v=5.0"></script>
   <script src="https://go.fliplink.me/content/assets/js/hip.js?v=5.0"></script>
@@ -22,6 +22,7 @@
     }
     html, body {
       width: 100%;
+      height: 100%;
       max-width: 100vw;
       overflow-x: hidden !important;
       font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
@@ -76,7 +77,7 @@
       line-height: 1.3 !important;
     }
 
-    /* AJUSTE PARA MÓVILES (2 COLUMNAS AMPLIAS Y RÁPIDAS) */
+    /* ADAPTACIÓN MÓVIL AUTOMÁTICA EN VITRINA (2 COLUMNAS FLEXIBLES) */
     @media (max-width: 768px) {
       body {
         padding: 15px 8px 90px 8px;
@@ -93,7 +94,7 @@
       .fliplink-container div[style*="width"],
       .fliplink-container [class*="item"] {
         width: 45% !important;
-        min-width: 140px !important;
+        min-width: 135px !important;
         max-width: 48% !important;
         margin: 0 0 15px 0 !important;
         box-sizing: border-box !important;
@@ -108,34 +109,52 @@
       }
     }
 
-    /* CORRECCIÓN DEL LECTOR FULLSCREEN PARA NO TAPAR CONTENIDO NI BOTONES */
-    .hip-modal, .hip-modal-content {
+    /* LECTOR AUTO-ADAPTABLE AL 100% DEL ALTO REAL DEL MÓVIL (100dvh) */
+    .hip-modal, 
+    .hip-modal-content, 
+    div[class*="hip-modal"] {
       width: 100vw !important;
-      height: 100vh !important;
+      height: 100dvh !important; /* dvh ajusta el alto dinámico según la barra del navegador */
+      max-width: 100vw !important;
+      max-height: 100dvh !important;
       position: fixed !important;
       top: 0 !important;
       left: 0 !important;
       margin: 0 !important;
       padding: 0 !important;
+      border: none !important;
+      border-radius: 0 !important;
+      background: #ffffff !important;
+      box-shadow: none !important;
       z-index: 999999 !important;
-      background: #000 !important;
+      display: flex !important;
+      flex-direction: column !important;
     }
 
     iframe[name="hip-iframe"],
     .hip-modal iframe {
       width: 100% !important;
       height: 100% !important;
+      flex: 1 1 auto !important;
       border: none !important;
+      margin: 0 !important;
+      padding: 0 !important;
     }
 
-    /* AJUSTE MÓVIL DEL CHAT PARA QUE NO TAPE LA BARRA DE PAGINACIÓN DE FLIPLINK */
+    /* OCULTAR BOTÓN DE PANTALLA COMPLETA QUE MUESTRA GO.FLIPLINK.ME */
+    .hip-modal [class*="fullscreen"],
+    .hip-modal .fa-expand,
+    .hip-modal .fa-compress {
+      display: none !important;
+    }
+
+    /* POSICIÓN COMPACTA Y NO INVASIVA PARA EL BOTÓN FLOTANTE DEL CHAT */
     @media (max-width: 768px) {
       #chatmaxima-widget-iframe, 
-      iframe[src*="chatmaxima"],
-      div[id*="chatmaxima"] {
-        bottom: 12px !important;
-        right: 12px !important;
-        transform: scale(0.9); /* Hace el botón ligeramente más compacto en pantalla móvil */
+      iframe[src*="chatmaxima"] {
+        bottom: 8px !important;
+        right: 8px !important;
+        transform: scale(0.85) !important;
       }
     }
   </style>
@@ -146,7 +165,7 @@
     <div class="fliplink-container" data-title="APRENDIZAJEGLOBAL" data-folder="biblioteca"></div>
   </div>
 
-  <!-- Widget de ChatMaxima simple y rápido -->
+  <!-- Widget de ChatMaxima -->
   <script>
     window.chatmaximaConfig = { token: '42vw6iznk9' };
   </script>
