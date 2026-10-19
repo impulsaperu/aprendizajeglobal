@@ -29,7 +29,7 @@
       color: #333;
     }
     body {
-      padding: 25px 15px 100px 15px;
+      padding: 25px 12px 100px 12px;
     }
     .container {
       width: 100%;
@@ -37,7 +37,7 @@
       margin: 0 auto;
     }
 
-    /* CONTENEDOR Y TÍTULO DE LA MARCA */
+    /* CONTENEDOR Y TÍTULO DE MARCA */
     .fliplink-container {
       width: 100%;
       text-align: center;
@@ -54,51 +54,67 @@
       width: 100% !important;
     }
 
-    /* OCULTAR SOLO EL BUSCADOR */
+    /* OCULTAR BUSCADOR DE FLIPLINK */
     .fliplink-search-box,
     .fliplink-container input[type="text"] {
       display: none !important;
     }
 
-    /* TÍTULOS DE CADA LIBRO VISIBLES BAJO LA PORTADA */
-    .fliplink-container .fliplink-title,
-    .fliplink-container .fliplink-item-title,
-    .fliplink-container [class*="title"],
+    /* VISIBILIDAD GARANTIZADA PARA LOS TÍTULOS DE CADA LIBRO */
+    .fliplink-container div,
     .fliplink-container p,
-    .fliplink-container span {
+    .fliplink-container span,
+    .fliplink-container a {
+      font-size: 0.95rem;
+    }
+    .fliplink-container [class*="title"],
+    .fliplink-container [class*="caption"],
+    .fliplink-container p {
       display: block !important;
       visibility: visible !important;
       opacity: 1 !important;
       text-align: center !important;
-      font-weight: 600 !important;
-      color: #333 !important;
+      font-weight: 700 !important;
+      color: #222 !important;
       margin-top: 10px !important;
-      font-size: 0.95rem !important;
       line-height: 1.3 !important;
     }
 
-    /* MÓVILES: 1 O 2 COLUMNAS AMPLIAS CON TÍTULO VISIBLE */
+    /* FORZAR 2 COLUMNAS GRANDES EN CELULARES */
     @media (max-width: 768px) {
       body {
         padding: 15px 8px 90px 8px;
       }
-      .fliplink-container .fliplink-item,
-      .fliplink-container [class*="item"] {
-        width: 85% !important;
-        max-width: 280px !important;
-        margin: 0 auto 25px auto !important;
-        display: block !important;
-        float: none !important;
+
+      /* Sobrescribir el estilo flex/grid de FlipLink */
+      .fliplink-container > div {
+        display: flex !important;
+        flex-wrap: wrap !important;
+        justify-content: center !important;
+        gap: 12px !important;
+        width: 100% !important;
       }
-      .fliplink-container [class*="item"] img {
+
+      /* Reescalar las tarjetas al 45% del ancho móvil */
+      .fliplink-container div[style*="width"],
+      .fliplink-container [class*="item"] {
+        width: 45% !important;
+        min-width: 140px !important;
+        max-width: 48% !important;
+        margin: 0 0 15px 0 !important;
+        box-sizing: border-box !important;
+      }
+
+      .fliplink-container img {
         width: 100% !important;
         height: auto !important;
-        border-radius: 6px !important;
+        object-fit: cover !important;
+        border-radius: 8px !important;
         box-shadow: 0 4px 12px rgba(0,0,0,0.12) !important;
       }
     }
 
-    /* MODAL EN PANTALLA COMPLETA AL ABRIR UN LIBRO */
+    /* MODAL FULLSCREEN COMPLETO AL ABRIR UN LIBRO */
     .hip-modal, .hip-modal-content {
       width: 100vw !important;
       height: 100vh !important;
