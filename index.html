@@ -61,15 +61,10 @@
     }
 
     /* VISIBILIDAD GARANTIZADA PARA LOS TÍTULOS DE CADA LIBRO */
-    .fliplink-container div,
-    .fliplink-container p,
-    .fliplink-container span,
-    .fliplink-container a {
-      font-size: 0.95rem;
-    }
     .fliplink-container [class*="title"],
     .fliplink-container [class*="caption"],
-    .fliplink-container p {
+    .fliplink-container p,
+    .fliplink-container span {
       display: block !important;
       visibility: visible !important;
       opacity: 1 !important;
@@ -77,6 +72,7 @@
       font-weight: 700 !important;
       color: #222 !important;
       margin-top: 10px !important;
+      font-size: 0.95rem !important;
       line-height: 1.3 !important;
     }
 
@@ -86,7 +82,6 @@
         padding: 15px 8px 90px 8px;
       }
 
-      /* Sobrescribir el estilo flex/grid de FlipLink */
       .fliplink-container > div {
         display: flex !important;
         flex-wrap: wrap !important;
@@ -95,7 +90,6 @@
         width: 100% !important;
       }
 
-      /* Reescalar las tarjetas al 45% del ancho móvil */
       .fliplink-container div[style*="width"],
       .fliplink-container [class*="item"] {
         width: 45% !important;
@@ -114,7 +108,7 @@
       }
     }
 
-    /* MODAL FULLSCREEN COMPLETO AL ABRIR UN LIBRO */
+    /* LECTOR DE LIBROS EN PANTALLA COMPLETA TOTAL */
     .hip-modal, .hip-modal-content {
       width: 100vw !important;
       height: 100vh !important;
@@ -145,11 +139,31 @@
     <div class="fliplink-container" data-title="APRENDIZAJEGLOBAL" data-folder="biblioteca"></div>
   </div>
 
-  <!-- Widget de ChatMaxima -->
+  <!-- Widget de ChatMaxima configurado para omitir la carátula Home -->
   <script>
-    window.chatmaximaConfig = { token: '42vw6iznk9' };
+    window.chatmaximaConfig = {
+      token: '42vw6iznk9',
+      defaultTab: 'chat',
+      openTab: 'chat',
+      showHome: false
+    };
   </script>
   <script id="42vw6iznk9" src="https://widget.chatmaxima.com/embed.min.js" defer></script>
+
+  <!-- Script para forzar la navegación directa al Chat al hacer clic en el widget -->
+  <script>
+    document.addEventListener("DOMContentLoaded", function() {
+      var checkExist = setInterval(function() {
+        var widgetIframe = document.querySelector('iframe[id*="chatmaxima"]') || document.querySelector('iframe[src*="chatmaxima"]');
+        if (widgetIframe) {
+          try {
+            // Envía instrucción al iframe de ChatMaxima para forzar la vista de chat
+            widgetIframe.contentWindow.postMessage(JSON.stringify({ event: 'navigate', tab: 'chat' }), '*');
+          } catch(e) {}
+        }
+      }, 500);
+    });
+  </script>
 
 </body>
 </html>
