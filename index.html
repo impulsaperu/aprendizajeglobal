@@ -22,8 +22,8 @@
     }
     html, body {
       width: 100%;
-      max-width: 100%;
-      overflow-x: hidden; /* Evita que la pantalla se desplace a los lados */
+      max-width: 100vw;
+      overflow-x: hidden !important;
       font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
       background-color: #f4f4f7;
       color: #333;
@@ -37,7 +37,7 @@
       margin: 0 auto;
     }
 
-    /* TÍTULO PRINCIPAL LIMPIO */
+    /* TÍTULO PRINCIPAL */
     .main-title {
       text-align: center;
       font-size: 1.5rem;
@@ -46,40 +46,29 @@
       margin-bottom: 20px;
     }
 
-    /* OCULTAR TODOS LOS ENCABEZADOS Y BÚSQUEDAS DE FLIPLINK */
-    .fliplink-container *, 
-    .fliplink-folder-title, 
-    .fliplink-search-box, 
-    div[class*="title"], 
-    h1, h2, h3, h4 {
-      max-width: 100%;
-    }
-    
-    .fliplink-container > div:first-child:not(.fliplink-items-container),
-    .fliplink-folder-title,
-    .fliplink-search-box {
+    /* OCULTAR DE RAÍZ CUALQUIER TEXTO O TÍTULO DE FLIPLINK */
+    .fliplink-container h1,
+    .fliplink-container h2,
+    .fliplink-container h3,
+    .fliplink-container .fliplink-folder-title,
+    .fliplink-container .fliplink-search-box,
+    .fliplink-container [class*="title"],
+    .fliplink-container [class*="header"] {
       display: none !important;
+      visibility: hidden !important;
+      height: 0 !important;
+      margin: 0 !important;
+      padding: 0 !important;
+      overflow: hidden !important;
     }
 
     .fliplink-container {
       width: 100%;
       display: flex;
       justify-content: center;
-      overflow: hidden;
     }
 
-    /* VISTA MÓVIL */
-    @media (max-width: 768px) {
-      body {
-        padding: 15px 8px 90px 8px;
-      }
-      .main-title {
-        font-size: 1.3rem;
-        margin-bottom: 15px;
-      }
-    }
-
-    /* MODAL A PANTALLA COMPLETA */
+    /* MODAL FULLSCREEN */
     .hip-modal, .hip-modal-content, iframe[name="hip-iframe"] {
       width: 100vw !important;
       height: 100vh !important;
@@ -104,6 +93,13 @@
     <!-- Galería de FlipLinks -->
     <div class="fliplink-container" data-title="APRENDIZAJEGLOBAL" data-folder="biblioteca"></div>
   </div>
+
+  <!-- Elimina el título residual inyectado dinámicamente por JS -->
+  <script>
+    setInterval(function() {
+      $('.fliplink-container').find('h1, h2, h3, [class*="title"]').not('.main-title').remove();
+    }, 300);
+  </script>
 
   <!-- Widget de ChatMaxima -->
   <script>
