@@ -10,7 +10,8 @@
   <script src="https://go.fliplink.me/content/assets/js/embed.js?v=5.0"></script>
   <script src="https://go.fliplink.me/content/assets/js/hip.js?v=5.0"></script>
   <script>
-    var itemsPerPage = 8, itemsPerRow = 3, itemGaps = '15px', filter = false, paginationPos = 'center', sort = 1;
+    // Variables nativas de FlipLink
+    var itemsPerRow = 3, itemsPerPage = 8, itemGaps = '20px', filter = false, paginationPos = 'center', sort = 2;
   </script>
 
   <style>
@@ -29,7 +30,7 @@
       color: #333;
     }
     body {
-      padding: 20px 10px 100px 10px;
+      padding: 25px 15px 100px 15px;
     }
     .container {
       width: 100%;
@@ -37,16 +38,17 @@
       margin: 0 auto;
     }
 
-    /* TÍTULO PRINCIPAL */
+    /* TÍTULO PRINCIPAL ÚNICO Y CENTRADO */
     .main-title {
       text-align: center;
-      font-size: 1.5rem;
+      font-size: 1.8rem;
       font-weight: 800;
       color: #222;
-      margin-bottom: 20px;
+      margin-bottom: 25px;
+      letter-spacing: -0.5px;
     }
 
-    /* OCULTAR DE RAÍZ CUALQUIER TEXTO O TÍTULO DE FLIPLINK */
+    /* OCULTAR ENCABEZADOS Y BÚSQUEDA INTERNA DE FLIPLINK */
     .fliplink-container h1,
     .fliplink-container h2,
     .fliplink-container h3,
@@ -68,7 +70,34 @@
       justify-content: center;
     }
 
-    /* MODAL FULLSCREEN */
+    /* AJUSTE FORZADO DE LAS TARJETAS EN CELULAR (1 O 2 COLUMNAS PARA QUE SE VEAN GRANDES) */
+    @media (max-width: 768px) {
+      body {
+        padding: 15px 10px 90px 10px;
+      }
+      .main-title {
+        font-size: 1.4rem;
+        margin-bottom: 15px;
+      }
+      /* Redimensiona las portadas en móviles para que no se vean diminutas */
+      .fliplink-container .fliplink-item,
+      .fliplink-container [class*="item"] {
+        width: 45% !important; /* 2 columnas grandes por fila en celular */
+        min-width: 140px !important;
+        margin: 8px !important;
+      }
+    }
+
+    @media (max-width: 480px) {
+      .fliplink-container .fliplink-item,
+      .fliplink-container [class*="item"] {
+        width: 85% !important; /* 1 columna gigante centrada en pantallas pequeñas */
+        max-width: 280px !important;
+        margin: 12px auto !important;
+      }
+    }
+
+    /* MODAL PANTALLA COMPLETA AL ABRIR UN LIBRO */
     .hip-modal, .hip-modal-content, iframe[name="hip-iframe"] {
       width: 100vw !important;
       height: 100vh !important;
@@ -94,7 +123,7 @@
     <div class="fliplink-container" data-title="APRENDIZAJEGLOBAL" data-folder="biblioteca"></div>
   </div>
 
-  <!-- Elimina el título residual inyectado dinámicamente por JS -->
+  <!-- Elimina el título residual inyectado por JS -->
   <script>
     setInterval(function() {
       $('.fliplink-container').find('h1, h2, h3, [class*="title"]').not('.main-title').remove();
